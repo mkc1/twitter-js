@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 router.get('/users/:name', function(req, res) {
   var name = req.params.name;
   var tweets = tweetBank.find( {name: name} );
-  res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: tweets } );
+  res.render( 'index', { title: 'Twitter.js - Posts by '+name, tweets: tweets, showForm: true } );
 });
 
 router.post('/tweets', function(req, res) {
