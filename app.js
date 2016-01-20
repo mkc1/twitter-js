@@ -1,20 +1,23 @@
 var express = require( 'express' );
+var bodyParser = require('body-parser');
 var app = express();
 var swig = require( 'swig' );
 var routes = require('./routes/');
+
 
 app.listen(3000, function(){
   console.log('server listening 3000');
   console.log('server listening 3000 again');
 })
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
-// app.use(function(req, res, next){
-//   var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-//   res.render( 'index', {title: 'Hall of Fame', people: people} );
-// })
 
-app.use('/', routes);
+
+app.use(routes);
 app.use(express.static('public'));
 
 app.engine('html', swig.renderFile);
