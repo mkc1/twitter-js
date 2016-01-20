@@ -15,6 +15,7 @@ app.listen(3000, function(){
 // })
 
 app.use('/', routes);
+app.use(express.static('public'));
 
 app.engine('html', swig.renderFile);
 
