@@ -16,17 +16,15 @@
     <h2>All Tweets</h2>
 
     {% if showForm %}
-    {% for tweet in tweets %}
   <form action="/tweets" method="POST">
     <label for="name_field">Name:</label>
-    <input name="name" value='{{tweet.name}}' type="text" id="name_field" />
+    <input name="name" {% if tweets.length < 3 %} value='{{tweets[0].name}}'{% endif %} type="text" id="name_field" />
 
     <label for="text_field">Text:</label>
     <input name="text" type="text" id="text_field" style="width: 350px;" />
 
     <input type="submit" value="Submit" />
     </form>
-    {% endfor %}
     {% endif %}
     
       <!-- display tweets here -->
